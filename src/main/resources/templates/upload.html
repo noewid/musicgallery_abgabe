@@ -1,0 +1,225 @@
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Music gallery</title>
+    <link rel="icon" type="image/x-icon" href="https://assets.webiconspng.com/uploads/2017/02/Music-Player-Modern-Icon.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300&display=swap" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+<body onload="populateImages()">
+<!-- NAVIGATION -->
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="home">Music gallery</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" href="home">Home</a>
+            <a class="nav-item nav-link active" href="upload">Upload Images <span class="sr-only">(current)</span></a>
+        </div>
+    </div>
+</nav>
+<!-- UPLOAD -->
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1>Community Image Gallery</h1>
+        <p>This is a place for you to share you favorite music related images and have them displayed in this gallery!</p>
+        <form enctype="multipart/form-data" id="uploadImage" action="uploadImage" method="post">
+            <div class="mb-3">
+                <label for="imageTitle" class="form-label">Title</label>
+                <input type="text" name="imageTitle" class="form-control" id="imageTitle">
+            </div>
+            <div class="mb-3">
+                <label for="imageLink" class="form-label">Link to Image</label>
+                <input type="text" name="imageLink" class="form-control" id="imageLink">
+            </div>
+            <button type="submit" class="btn btn-dark">Submit</button>
+        </form>
+    </div>
+</section>
+<div class="image-gallery py-5 bg-light">
+    <div class="container">
+        <div id="images" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+            <div class="col">
+                <div class="card shadow-sm">
+                    <a href="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2019%2F04%2Ftame-impala-asap-rocky-perform-at-coachella-0.jpg?w=960&cbr=1&q=90&fit=max" target="_blank"><img src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2019%2F04%2Ftame-impala-asap-rocky-perform-at-coachella-0.jpg?w=960&cbr=1&q=90&fit=max" class="card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"></a>
+
+                    <div class="card-body">
+                        <p class="card-text">asap rocky coachella</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button disabled type="button" class="btn btn-sm btn-dark">Delete</button>
+                                <button disabled type="button" class="btn btn-sm btn-dark">Info</button>
+                            </div>
+                            <small class="text-muted">asap-rocky-coachella.jpg</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <a href="https://pbs.twimg.com/media/FOF7ydCVsAI4-JV.jpg" target="_blank"><img src="https://pbs.twimg.com/media/FOF7ydCVsAI4-JV.jpg" class="card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"></a>
+
+                    <div class="card-body">
+                        <p class="card-text">yeat uzi</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button disabled type="button" class="btn btn-sm btn-dark">Delete</button>
+                                <button disabled type="button" class="btn btn-sm btn-dark">Info</button>
+                            </div>
+                            <small class="text-muted">yeat_uzi.jpg</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <a href="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/02/05/08/21-savage.jpg?width=1200" target="_blank"><img src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2019/02/05/08/21-savage.jpg?width=1200" class="card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"></a>
+
+                    <div class="card-body">
+                        <p class="card-text">sheyaa bin abraham-joseph</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button disabled type="button" class="btn btn-sm btn-dark">Delete</button>
+                                <button disabled type="button" class="btn btn-sm btn-dark">Info</button>
+                            </div>
+                            <small class="text-muted">sheyaa_bin_abraham-joseph.jpg</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <a href="https://lastfm.freetls.fastly.net/i/u/ar0/486ab28c1f6a78fa396d6c86e52b5d22" target="_blank"><img src="https://lastfm.freetls.fastly.net/i/u/ar0/486ab28c1f6a78fa396d6c86e52b5d22" class="card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"></a>
+
+                    <div class="card-body">
+                        <p class="card-text">yeat kankan twizzy</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button disabled type="button" class="btn btn-sm btn-dark">Delete</button>
+                                <button disabled type="button" class="btn btn-sm btn-dark">Info</button>
+                            </div>
+                            <small class="text-muted">yeat_kankan_twizzy.jpg</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <a href="https://townsquare.media/site/812/files/2021/02/future1.jpg?w=1200" target="_blank"><img src="https://townsquare.media/site/812/files/2021/02/future1.jpg?w=1200" class="card-img-top" width="100%" height="225" preserveAspectRatio="xMidYMid slice" focusable="false"></a>
+
+                    <div class="card-body">
+                        <p class="card-text">the streets</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button disabled type="button" class="btn btn-sm btn-dark">Delete</button>
+                                <button disabled type="button" class="btn btn-sm btn-dark">Info</button>
+                            </div>
+                            <small class="text-muted">the_streets.jpg</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<form style="display:none;" id="deleteImage" action="deleteImage" method="post">
+    <input type="text" name="imageId" id="imageId">
+</form>
+<!-- FOOTER -->
+<footer class="blog-footer">
+    <p>Website built by Noé Widmer and Dean Roth</p>
+    <p>
+        <a href="home">Back to home</a>
+    </p>
+</footer>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    function deleteImages(value) {
+        document.getElementById("imageId").value = value;
+        document.getElementById("deleteImage").submit();
+    }
+
+    function populateImages() {
+        // FOR EACH WITH IMAGES
+        /*[# th:each="image : ${images}"]*/
+            var buttonDel = document.createElement("button");
+            buttonDel.innerHTML = "Delete";
+            buttonDel.classList.add("btn", "btn-sm", "btn-secondary");
+            buttonDel.value = /*[[${image.id}]]*/;
+            buttonDel.setAttribute("onclick", "deleteImages(this.value);");
+            var buttonInf = document.createElement("button");
+            buttonInf.innerHTML = "Info";
+            buttonInf.classList.add("btn", "btn-sm", "btn-secondary");
+            var buttonGroup = document.createElement("div");
+            buttonGroup.classList.add("btn-group");
+            buttonGroup.appendChild(buttonDel);
+            buttonGroup.appendChild(buttonInf);
+            var fileName = document.createElement("small");
+            var shortLink = /*[[${image.link}]]*/;
+            shortLink = shortLink.slice(8, 23);
+            fileName.innerHTML = shortLink;
+            fileName.classList.add("text-muted");
+            var content = document.createElement("div");
+            content.classList.add("d-flex", "justify-content-between", "align-items-center");
+            content.appendChild(buttonGroup);
+            content.appendChild(fileName);
+            var fileTitle = document.createElement("p");
+            fileTitle.innerHTML = /*[[${image.name}]]*/;
+            fileTitle.classList.add("card-text");
+            var cardBody = document.createElement("div");
+            cardBody.classList.add("card-body");
+            cardBody.appendChild(fileTitle);
+            cardBody.appendChild(content);
+            var image = document.createElement("img");
+            image.classList.add("card-img-top");
+            var src = /*[[${image.link}]]*/;
+            image.setAttribute("width", "100%");
+            image.setAttribute("height", "225");
+            image.setAttribute("preserveAspectRatio", "xMidYMid slice");
+            image.setAttribute("focusable", "false");
+            image.setAttribute("src", src);
+            var linkToImage = document.createElement("a");
+            linkToImage.setAttribute("href", src);
+            linkToImage.setAttribute("target", "_blank");
+            linkToImage.appendChild(image);
+            var card = document.createElement("div");
+            card.classList.add("card", "shadow-sm");
+            card.appendChild(linkToImage);
+            card.appendChild(cardBody);
+            var col = document.createElement("div");
+            col.classList.add("col");
+            col.appendChild(card);
+            var gallery = document.getElementById("images");
+            gallery.prepend(col);
+        /*[/]*/
+    }
+
+    /*]]>*/
+</script>
+</body>
+</html>
